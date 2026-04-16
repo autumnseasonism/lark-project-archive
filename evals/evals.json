@@ -1,0 +1,378 @@
+{
+  "skill_name": "lark-project-archive",
+  "evals": [
+    {
+      "id": 1,
+      "type": "positive",
+      "prompt": "帮我拆解这个AI项目并归档到飞书 https://github.com/langchain-ai/langchain",
+      "expected_output": "触发技能，开始 Phase 0",
+      "rationale": "经典三要素齐全：GitHub URL + 拆解 + 飞书归档"
+    },
+    {
+      "id": 2,
+      "type": "positive",
+      "prompt": "这个项目挺有意思的 https://github.com/openai/swarm 帮我分析下存到知识库",
+      "expected_output": "触发技能",
+      "rationale": "口语化，'知识库'指向飞书知识库"
+    },
+    {
+      "id": 3,
+      "type": "positive",
+      "prompt": "分析 anthropics/courses 存飞书",
+      "expected_output": "触发技能，自动补全为 https://github.com/anthropics/courses",
+      "rationale": "极简表达 + owner/repo 简写格式"
+    },
+    {
+      "id": 4,
+      "type": "positive",
+      "prompt": "帮我学习这个开源项目 https://github.com/crewAI/crewAI 分析报告保存到飞书wiki里",
+      "expected_output": "触发技能",
+      "rationale": "'学习' + '飞书wiki' 变体触发词"
+    },
+    {
+      "id": 5,
+      "type": "positive",
+      "prompt": "clone这个项目分析下然后存飞书 https://github.com/microsoft/autogen",
+      "expected_output": "触发技能",
+      "rationale": "clone + 分析 + 存飞书"
+    },
+    {
+      "id": 6,
+      "type": "positive",
+      "prompt": "https://github.com/anthropics/anthropic-cookbook.git 这个项目帮我做个全面的技术分析，结果归档到飞书知识库",
+      "expected_output": "触发技能",
+      "rationale": ".git 后缀 URL + 技术分析 + 飞书知识库"
+    },
+    {
+      "id": 7,
+      "type": "positive",
+      "prompt": "git@github.com:vercel/ai.git 分析一下这个项目存到飞书",
+      "expected_output": "触发技能，识别 SSH 格式 URL",
+      "rationale": "SSH 格式的 GitHub URL"
+    },
+    {
+      "id": 8,
+      "type": "positive",
+      "prompt": "帮我研究一下这个仓库的架构和提示词，然后存档到飞书wiki https://github.com/run-llama/llama_index",
+      "expected_output": "触发技能",
+      "rationale": "'研究' + '存档到飞书wiki'"
+    },
+    {
+      "id": 9,
+      "type": "positive",
+      "prompt": "我想了解这个项目是怎么用大模型的，帮我分析完放到飞书知识库里 https://github.com/lobehub/lobe-chat",
+      "expected_output": "触发技能",
+      "rationale": "'了解' + '放到飞书知识库'"
+    },
+    {
+      "id": 10,
+      "type": "positive",
+      "prompt": "看看这个 https://github.com/dify-ai/dify 怎么实现的，分析报告写到飞书文档库",
+      "expected_output": "触发技能",
+      "rationale": "'看看' + '飞书文档库'"
+    },
+    {
+      "id": 11,
+      "type": "positive",
+      "prompt": "帮我对 https://github.com/mem0ai/mem0 做一份详细的提示词分析报告并归档到飞书",
+      "expected_output": "触发技能",
+      "rationale": "明确提到提示词分析 + 归档飞书"
+    },
+    {
+      "id": 12,
+      "type": "positive",
+      "prompt": "我需要分析这个AI Agent框架 https://github.com/joaomdmoura/crewAI 把分析结果保存到我的飞书知识库里面",
+      "expected_output": "触发技能",
+      "rationale": "长句 + '保存到我的飞书知识库'"
+    },
+    {
+      "id": 13,
+      "type": "positive",
+      "prompt": "study this project and archive to feishu https://github.com/openai/openai-agents-python",
+      "expected_output": "触发技能",
+      "rationale": "英文指令，feishu 关键词"
+    },
+    {
+      "id": 14,
+      "type": "positive",
+      "prompt": "analyze https://github.com/instructor-ai/instructor and save to lark wiki",
+      "expected_output": "触发技能",
+      "rationale": "英文指令，'lark wiki' 等同飞书知识库"
+    },
+    {
+      "id": 15,
+      "type": "positive",
+      "prompt": "https://github.com/BerriAI/litellm\n\n帮我拆解这个项目的大模型调用方式，输出技术报告和产品说明书，存到飞书",
+      "expected_output": "触发技能",
+      "rationale": "URL 单独一行 + 多行描述 + 明确提到两种产出"
+    },
+    {
+      "id": 16,
+      "type": "positive",
+      "prompt": "我老板让我调研一下这个开源项目 https://github.com/phidatahq/phidata 能不能帮我出份报告存到飞书知识库？",
+      "expected_output": "触发技能",
+      "rationale": "带有工作场景背景的请求"
+    },
+    {
+      "id": 17,
+      "type": "positive",
+      "prompt": "把 https://github.com/pydantic/pydantic-ai 这个项目的架构和prompt全部梳理一遍保存到飞书wiki上",
+      "expected_output": "触发技能",
+      "rationale": "'梳理' + 'prompt' + '保存到飞书wiki'"
+    },
+    {
+      "id": 18,
+      "type": "positive",
+      "prompt": "分析这个repo存到飞书知识库，空间名叫「AI项目分析」 https://github.com/mlc-ai/web-llm",
+      "expected_output": "触发技能，额外识别用户指定的空间名",
+      "rationale": "附带额外参数（指定知识空间名称）"
+    },
+    {
+      "id": 19,
+      "type": "positive",
+      "prompt": "帮我分析这个项目并归档到飞书 https://github.com/THUDM/ChatGLM-6B 放到这个节点下面 https://xxx.feishu.cn/wiki/abc123",
+      "expected_output": "触发技能，识别父节点 wiki URL",
+      "rationale": "同时给出 GitHub URL 和飞书父节点 URL"
+    },
+    {
+      "id": 20,
+      "type": "positive",
+      "prompt": "麻烦帮我看下 https://github.com/stanfordnlp/dspy 这个DSPy框架是怎么做prompt优化的，分析完存到飞书",
+      "expected_output": "触发技能",
+      "rationale": "具体技术问题 + 存飞书"
+    },
+    {
+      "id": 21,
+      "type": "positive",
+      "prompt": "帮忙拆解存飞书 https://github.com/geekan/MetaGPT",
+      "expected_output": "触发技能",
+      "rationale": "超短触发，最少字数"
+    },
+    {
+      "id": 22,
+      "type": "positive",
+      "prompt": "我想把这几个项目都分析一下存到飞书知识库：\n1. https://github.com/openai/swarm\n2. https://github.com/crewAI/crewAI",
+      "expected_output": "触发技能，可能需要确认是逐个执行还是选一个先开始",
+      "rationale": "多个 URL，批量请求"
+    },
+    {
+      "id": 23,
+      "type": "positive",
+      "prompt": "上次分析 langchain 中断了，帮我继续完成并存到飞书 https://github.com/langchain-ai/langchain",
+      "expected_output": "触发技能，检查是否有断点续传的 ai_analysis/ 目录",
+      "rationale": "断点续传场景"
+    },
+    {
+      "id": 24,
+      "type": "positive",
+      "prompt": "这个 https://github.com/Significant-Gravitas/AutoGPT 帮我做一份说明书和技术报告存到飞书wiki",
+      "expected_output": "触发技能",
+      "rationale": "明确说明产出类型 + 飞书wiki"
+    },
+    {
+      "id": 25,
+      "type": "positive",
+      "prompt": "能不能分析一下这个AI工具的源码然后归档？https://github.com/paul-gauthier/aider 存到飞书里",
+      "expected_output": "触发技能",
+      "rationale": "疑问句 + '归档' + '存到飞书里'"
+    },
+
+    {
+      "id": 26,
+      "type": "negative",
+      "prompt": "帮我分析下这个项目 https://github.com/openai/swarm",
+      "expected_output": "不触发技能，执行常规代码分析",
+      "rationale": "有 GitHub URL + 分析意图，但无飞书/知识库/归档关键词"
+    },
+    {
+      "id": 27,
+      "type": "negative",
+      "prompt": "帮我在飞书知识库创建一个技术文档，标题叫'API设计规范'",
+      "expected_output": "不触发技能",
+      "rationale": "飞书操作但无 GitHub 项目分析需求"
+    },
+    {
+      "id": 28,
+      "type": "negative",
+      "prompt": "帮我clone一下 https://github.com/some/repo 到本地",
+      "expected_output": "不触发技能，仅 git clone",
+      "rationale": "有 GitHub URL 但只要 clone，无分析+归档"
+    },
+    {
+      "id": 29,
+      "type": "negative",
+      "prompt": "帮我把飞书文档导出为markdown",
+      "expected_output": "不触发技能",
+      "rationale": "飞书操作但方向相反（导出而非归档），无 GitHub"
+    },
+    {
+      "id": 30,
+      "type": "negative",
+      "prompt": "这段Python代码是什么意思？def hello(): print('world')",
+      "expected_output": "不触发技能",
+      "rationale": "完全无关的代码问答"
+    },
+    {
+      "id": 31,
+      "type": "negative",
+      "prompt": "帮我在飞书日历上创建一个会议",
+      "expected_output": "不触发技能",
+      "rationale": "飞书操作但是日历不是知识库，且无 GitHub"
+    },
+    {
+      "id": 32,
+      "type": "negative",
+      "prompt": "帮我写一个Python脚本来调用OpenAI的API",
+      "expected_output": "不触发技能",
+      "rationale": "AI相关但是写代码请求，不是项目分析+归档"
+    },
+    {
+      "id": 33,
+      "type": "negative",
+      "prompt": "帮我review一下这个PR https://github.com/some/repo/pull/42",
+      "expected_output": "不触发技能",
+      "rationale": "GitHub链接但是 PR review，不是项目分析归档"
+    },
+    {
+      "id": 34,
+      "type": "negative",
+      "prompt": "帮我看看当前目录下这个项目的代码结构",
+      "expected_output": "不触发技能",
+      "rationale": "本地项目分析，无 GitHub URL，无飞书归档"
+    },
+    {
+      "id": 35,
+      "type": "negative",
+      "prompt": "帮我部署 https://github.com/some/repo 到服务器",
+      "expected_output": "不触发技能",
+      "rationale": "有 GitHub URL 但意图是部署不是分析归档"
+    },
+    {
+      "id": 36,
+      "type": "negative",
+      "prompt": "https://github.com/openai/swarm 这个项目有多少star？",
+      "expected_output": "不触发技能",
+      "rationale": "GitHub URL 但只是问信息，无分析+归档意图"
+    },
+    {
+      "id": 37,
+      "type": "negative",
+      "prompt": "帮我创建一个飞书知识库白板",
+      "expected_output": "不触发技能",
+      "rationale": "飞书白板操作但无 GitHub 项目分析"
+    },
+    {
+      "id": 38,
+      "type": "negative",
+      "prompt": "帮我把本地的分析报告上传到飞书知识库",
+      "expected_output": "不触发技能（或触发 lark-wiki/lark-doc 技能）",
+      "rationale": "上传到飞书但是已有本地文件，不需要 GitHub clone + 分析流程"
+    },
+    {
+      "id": 39,
+      "type": "negative",
+      "prompt": "帮我搜索飞书知识库里有没有关于 LangChain 的文档",
+      "expected_output": "不触发技能",
+      "rationale": "飞书搜索操作，不是分析归档"
+    },
+    {
+      "id": 40,
+      "type": "negative",
+      "prompt": "帮我给 https://github.com/some/repo 提一个issue",
+      "expected_output": "不触发技能",
+      "rationale": "GitHub 操作但是提 issue，不是分析归档"
+    },
+    {
+      "id": 41,
+      "type": "negative",
+      "prompt": "翻译这段英文提示词成中文：You are a helpful assistant...",
+      "expected_output": "不触发技能",
+      "rationale": "虽然涉及提示词翻译但是单条翻译请求，非项目级分析"
+    },
+    {
+      "id": 42,
+      "type": "negative",
+      "prompt": "帮我分析一下这个项目 https://github.com/some/repo 然后发到Notion里",
+      "expected_output": "不触发技能（目标不是飞书）",
+      "rationale": "有 GitHub + 分析 但归档目标是 Notion 不是飞书"
+    },
+
+    {
+      "id": 43,
+      "type": "edge",
+      "prompt": "https://github.com/some/ai-tool 帮我学习这个项目并保存报告",
+      "expected_output": "不确定——'保存报告'未明确指飞书。理想行为：追问保存到哪里",
+      "rationale": "有 URL + 分析意图 + '保存'，但未提飞书。测试是否过度触发"
+    },
+    {
+      "id": 44,
+      "type": "edge",
+      "prompt": "帮我拆解一个AI项目存到飞书",
+      "expected_output": "部分触发——应先询问 GitHub URL",
+      "rationale": "有分析意图 + 飞书归档，但缺少 GitHub URL"
+    },
+    {
+      "id": 45,
+      "type": "edge",
+      "prompt": "我有个 GitLab 项目 https://gitlab.com/my/project 帮我分析存到飞书知识库",
+      "expected_output": "可能触发但应提示仅支持 GitHub，或尝试 git clone GitLab URL",
+      "rationale": "非 GitHub 源但其他条件满足"
+    },
+    {
+      "id": 46,
+      "type": "edge",
+      "prompt": "帮我分析这个项目并归档 https://github.com/some/repo",
+      "expected_output": "可能触发——'归档'暗示飞书但不明确。理想：追问归档到哪里",
+      "rationale": "'归档'可能暗示飞书知识库，但也可能指其他地方"
+    },
+    {
+      "id": 47,
+      "type": "edge",
+      "prompt": "帮我分析 https://github.com/some/repo 存到飞书，但我不需要产品说明书只要技术报告",
+      "expected_output": "触发技能，但需要处理用户的定制要求（跳过第五阶段）",
+      "rationale": "触发条件满足但用户要求定制流程"
+    },
+    {
+      "id": 48,
+      "type": "edge",
+      "prompt": "之前分析的那个 swarm 项目，帮我重新归档到飞书另一个知识空间",
+      "expected_output": "不确定——可能需要重新触发技能的 Phase 3，或者使用其他飞书技能上传已有文件",
+      "rationale": "引用之前的分析结果，只需要重新归档不需要重新分析"
+    },
+    {
+      "id": 49,
+      "type": "edge",
+      "prompt": "帮我分析这个私有仓库 https://github.com/myorg/private-repo 存到飞书知识库",
+      "expected_output": "触发技能，Phase 1 clone 可能因权限失败需要处理",
+      "rationale": "私有仓库场景，技能应触发但 clone 阶段需要特殊处理"
+    },
+    {
+      "id": 50,
+      "type": "edge",
+      "prompt": "https://github.com/some/repo 分析存飞书，但这不是AI项目，是个前端UI库",
+      "expected_output": "触发技能，Phase 2 第一阶段发现无 LLM 内容后应终止并告知用户",
+      "rationale": "非 AI/LLM 项目，技能触发后应在分析阶段正确终止"
+    },
+    {
+      "id": 51,
+      "type": "edge",
+      "prompt": "先帮我分析 https://github.com/some/repo 看看值不值得深入研究，如果值得再存到飞书",
+      "expected_output": "可能触发——但用户意图是分两步：先预判再决定是否归档",
+      "rationale": "条件式归档，用户希望先看初步结果再决定是否走完整流程"
+    },
+    {
+      "id": 52,
+      "type": "edge",
+      "prompt": "帮我把 https://github.com/some/repo 的README翻译成中文存到飞书",
+      "expected_output": "不应触发（只翻译 README 不是完整项目分析），或触发后识别到需求不匹配",
+      "rationale": "有 GitHub + 飞书 但只是翻译 README，不是完整的项目分析流程"
+    },
+    {
+      "id": 53,
+      "type": "edge",
+      "prompt": "下载 https://github.com/some/repo/blob/main/prompts/system.md 这个文件存到飞书",
+      "expected_output": "不应触发（只下载单个文件不是分析整个项目）",
+      "rationale": "GitHub 文件链接（非仓库根链接）+ 飞书，但不是项目级分析"
+    }
+  ]
+}

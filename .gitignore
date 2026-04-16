@@ -1,0 +1,14 @@
+# Skill development workspace (test iterations and trigger reports)
+lark-project-archive-workspace/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
