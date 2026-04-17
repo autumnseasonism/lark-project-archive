@@ -79,7 +79,7 @@
 
 ```
 帮我拆解这个 AI 项目并归档到飞书
-分析这个 repo 存到知识库
+分析这个 lark-project-archive 存到知识库
 学习这个开源项目并保存报告到飞书 wiki
 clone 这个项目分析下然后存飞书
 analyze this repo and archive to lark wiki
