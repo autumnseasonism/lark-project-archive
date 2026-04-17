@@ -152,22 +152,26 @@ Mermaid 代码块 → 替换为白板占位符 → 上传 markdown → 获取 bo
 
 ### 安装方式
 
-**Claude Code**
+**推荐方式：直接对 Agent 说**
 
-```bash
-# 方式一：放在项目目录（自动发现）
-git clone https://github.com/autumnseasonism/lark-project-archive.git
-
-# 方式二：放在全局 skills 目录
-git clone https://github.com/autumnseasonism/lark-project-archive.git ~/.claude/skills/lark-project-archive
+```text
+请帮我安装这个 skill：
+https://github.com/autumnseasonism/lark-project-archive
 ```
 
-**Codex CLI / Trae / Cline / Cursor / 其他 Agent**
+如果该 Agent 支持安装 skill，通常这就是最简单的方式。
 
-将目录放到对应 Agent 的 skills 扫描路径下，具体路径请参考各 Agent 的文档。
+**如果你想手动安装**
+
+```bash
+# 放在当前项目目录，或放到 Agent 的 skills 扫描路径下
+git clone https://github.com/autumnseasonism/lark-project-archive.git
+```
+
+将仓库目录放到当前项目目录，或对应 Agent 的 skills 扫描路径下。
 
 > [!TIP]
-> 任何支持 SKILL.md 规范的 Agent 都可以直接使用本技能，不绑定特定平台。
+> 不同 Agent 的全局 skills 目录并不相同；如果不确定，优先直接让 Agent 帮你安装。
 
 ### 首次使用
 
@@ -175,7 +179,7 @@ git clone https://github.com/autumnseasonism/lark-project-archive.git ~/.claude/
 
 1. **应用配置** — 绑定飞书自建应用（`lark-cli config init --new`）
 2. **用户授权** — 一次性授权所有需要的权限（9 个 scope）
-3. **命令白名单**（仅 Claude Code）— 将 `lark-cli` / `npx` / `git` 加入白名单
+3. **命令授权** — 如果 Agent 会拦截命令执行，允许 `lark-cli` / `npx` / `git`
 
 三步完成后，后续使用直接说话即可。
 

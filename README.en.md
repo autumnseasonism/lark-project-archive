@@ -151,22 +151,26 @@ Supports flowcharts, sequence diagrams, class diagrams, mind maps, pie charts, s
 
 ### Install
 
-**Claude Code**
+**Recommended: just tell your Agent**
 
-```bash
-# Option 1: Project directory (auto-discovered)
-git clone https://github.com/autumnseasonism/lark-project-archive.git
-
-# Option 2: Global skills directory
-git clone https://github.com/autumnseasonism/lark-project-archive.git ~/.claude/skills/lark-project-archive
+```text
+Please install this skill:
+https://github.com/autumnseasonism/lark-project-archive
 ```
 
-**Codex CLI / Trae / Cline / Cursor / Other Agents**
+If the agent supports skill installation, this is usually the simplest option.
 
-Place the directory in your Agent's skill scan path. Refer to each Agent's documentation for the specific path.
+**If you want to install it manually**
+
+```bash
+# Put it in the current project directory, or in your agent's skill scan path
+git clone https://github.com/autumnseasonism/lark-project-archive.git
+```
+
+Place the repository directory in the current project directory, or in that agent's skill scan path.
 
 > [!TIP]
-> Any agent supporting the SKILL.md spec can use this skill directly. Not tied to any specific platform.
+> Different agents use different global skill directories. If you are unsure, ask the agent to install it for you first.
 
 ### First Run
 
@@ -174,7 +178,7 @@ The skill automatically guides you through initialization — no manual configur
 
 1. **App Config** — Bind a Lark developer app (`lark-cli config init --new`)
 2. **User Auth** — One-time authorization for all required permissions (9 scopes)
-3. **Command Allowlist** (Claude Code only) — Add `lark-cli` / `npx` / `git` to the allowlist
+3. **Command Permission** — If your agent asks before running commands, allow `lark-cli` / `npx` / `git`
 
 After these three steps, just talk to trigger the skill.
 
