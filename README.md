@@ -65,7 +65,7 @@
 ## 一句话怎么用
 
 ```
-帮我拆解这个 AI 项目并归档到飞书 https://github.com/example/repo
+帮我拆解这个 AI 项目并归档到飞书 https://github.com/autumnseasonism/lark-project-archive
 ```
 
 技能自动完成四个阶段：
