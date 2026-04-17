@@ -65,7 +65,7 @@ You want to analyze an open-source AI project's prompts and architecture, then o
 ## Quick Start
 
 ```
-Analyze this AI project and archive to Lark wiki: https://github.com/example/repo
+Analyze this AI project and archive to Lark wiki: https://github.com/autumnseasonism/lark-project-archive
 ```
 
 The skill automatically completes four phases:
@@ -79,7 +79,7 @@ The skill automatically completes four phases:
 
 ```
 Analyze this AI project and archive to Lark wiki
-Study this repo and save to Feishu knowledge base
+Study this lark-project-archive and save to Feishu knowledge base
 Clone this project, analyze it, then store in Lark
 帮我拆解这个 AI 项目并归档到飞书
 分析这个 repo 存到知识库
