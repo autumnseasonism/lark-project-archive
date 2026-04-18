@@ -30,6 +30,8 @@ lark-cli docs +update --doc <OBJ_TOKEN> --mode overwrite \
   --markdown "<markdown_content>" --as user
 ```
 
+**强约束**：只有在内容非常短且确认没有经过 JSON / 字符串转义时，才允许直接传 `"<markdown_content>"`。对模板生成内容、LLM 产出的多段 Markdown、首页导航文档，统一先写入 `.md` 文件，再从文件读取上传；**不要**上传包含字面量 `\n` 的单行字符串。
+
 **mode 参数**：
 - `overwrite`：覆盖全部内容（适合首次写入）
 - `append`：追加到末尾
@@ -43,6 +45,15 @@ lark-cli docs +update --doc <OBJ_TOKEN> --mode overwrite \
 lark-cli docs +update --doc <OBJ_TOKEN> --mode overwrite \
   --markdown "$(cat /tmp/content.md)" --as user
 ```
+
+PowerShell 环境等价写法：
+
+```powershell
+lark-cli docs +update --doc <OBJ_TOKEN> --mode overwrite `
+  --markdown (Get-Content .\content.md -Raw) --as user
+```
+
+如果上传后 `docs +fetch` 返回的正文里出现字面量 `\n`、`\t`，说明上传前内容已被错误转义；不要继续 append，直接从原始 `.md` 文件重新 `overwrite`。
 
 如果仍然过长，可以分段上传：先 `overwrite` 第一部分，再 `append` 后续部分。
 

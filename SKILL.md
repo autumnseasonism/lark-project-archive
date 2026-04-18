@@ -1,6 +1,6 @@
 ---
 name: lark-project-archive
-version: 1.0.0
+version: 1.0.1
 description: GitHub 项目拆解分析与飞书知识库归档（Analyze GitHub projects and archive to Feishu/Lark wiki）。触发条件——必须同时满足两点：(1) 用户提供了 GitHub 项目地址（URL 或 owner/repo 简写），(2) 用户要求将结果归档/保存到飞书（Feishu/Lark）知识库或 wiki。两个条件缺一不可：仅有 GitHub 项目分析需求但未提及飞书/知识库/wiki 归档的 → 不使用此技能（应使用 study_project 等分析类技能）；仅有飞书操作但无 GitHub 项目分析的 → 不使用此技能（应使用 lark-wiki/lark-doc 等飞书技能）；目标平台是 Notion/Confluence 等非飞书平台的 → 不使用此技能。自动克隆项目、系统化分析提取提示词与架构、将分析报告归档到飞书知识库（含 Mermaid 图表自动转飞书白板可视化）、清理本地文件。典型触发："帮我拆解这个 AI 项目并归档到飞书"、"分析这个 repo 存到知识库"、"学习这个开源项目并保存报告到飞书wiki"、"clone 这个项目分析下然后存飞书"、"analyze this repo and archive to lark wiki"、"study this project and save to feishu"。
 allowed-tools: Read Glob Grep Bash Edit Write Agent
 metadata:
@@ -380,6 +380,20 @@ lark-cli docs +update --doc <PROMPT_OBJ_TOKEN> --mode overwrite \
 - 核心模式: [项目类型]
 ```
 
+**必须先落盘再上传**：将上述内容保存为 `ai_analysis/ROOT_OVERVIEW.md`，然后从文件读取上传，**禁止**直接拼接内联字符串（例如 `--markdown "# 标题\n\n## 项目概述..."`）。在 Bash / zsh 中使用：
+```bash
+lark-cli docs +update --doc <ROOT_OBJ_TOKEN> --mode overwrite \
+  --markdown "$(cat ai_analysis/ROOT_OVERVIEW.md)" --as user
+```
+
+在 PowerShell 中使用：
+```powershell
+lark-cli docs +update --doc <ROOT_OBJ_TOKEN> --mode overwrite `
+  --markdown (Get-Content ai_analysis/ROOT_OVERVIEW.md -Raw) --as user
+```
+
+> 原因：PowerShell 和 Bash 都不会把普通字符串里的字面量 `\n` 自动转换成换行。若先把 Markdown 序列化成单行字符串再上传，飞书会把 `\n` 当正文文本显示，导致首页渲染异常。
+
 ### 3.6 验证归档结果
 
 归档完成后，验证所有文档已成功创建：
@@ -388,10 +402,12 @@ lark-cli docs +update --doc <PROMPT_OBJ_TOKEN> --mode overwrite \
    ```bash
    lark-cli wiki nodes list --params '{"space_id":"<SPACE_ID>","parent_node_token":"<ROOT_NODE_TOKEN>"}' --as user
    ```
-2. 检查关键文档内容非空：
+2. 检查关键文档内容非空，且首页未出现转义上传：
    ```bash
+   lark-cli docs +fetch --doc <ROOT_OBJ_TOKEN> --as user | head -20
    lark-cli docs +fetch --doc <REPORT_OBJ_TOKEN> --as user | head -20
    ```
+   如果根节点首页内容中出现字面量 `\n`、`\t`，或标题/小节没有真实换行，判定为“Markdown 被转义后上传”。此时必须重新生成 `ai_analysis/ROOT_OVERVIEW.md`，并从文件重新执行一次 `overwrite` 上传。
 3. 向用户报告归档结果：
    - 知识空间名称和链接
    - 创建的节点数量
