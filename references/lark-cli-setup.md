@@ -43,19 +43,32 @@ lark-cli 支持两种身份，通过 `--as` 参数切换：
 
 ## 用户认证
 
-本技能需要以下权限 scope：
+本技能统一使用 `domain` 维度授权，避免在长 scope 串上发生格式错误或漏配：
 
 ```bash
-lark-cli auth login --scope "wiki:space:read wiki:space:retrieve wiki:node:read wiki:node:create wiki:node:retrieve docx:document:write_only docx:document:readonly drive:drive:write drive:drive:read"
+lark-cli auth login --domain wiki,docs,drive
 ```
 
 执行后终端会显示授权链接，将链接提供给用户在浏览器中完成授权。
 
-**多次 login 权限累积**：每次 `auth login` 授予的 scope 会累加，不会覆盖之前的。如果后续操作需要额外 scope，可以增量授权：
+> `lark-cli auth login --scope ...` 在 CLI 中虽然存在，但本技能不推荐使用。原因是：
+> - 长 scope 串在实际执行中更容易写错
+> - 与主技能文档的 `--domain wiki,docs,drive` 策略不一致
+> - 某些环境下会出现 `invalid or malformed scopes`
+
+**多次 login 权限累积**：每次 `auth login` 授予的权限会累加，不会覆盖之前的。如果后续操作需要额外权限，优先按 domain 增量授权：
 
 ```bash
-lark-cli auth login --scope "<missing_scope>"
+lark-cli auth login --domain <missing_domain>
 ```
+
+### PowerShell 与 JSON 参数
+
+本技能里部分命令会带 `--params` / `--data` JSON。若在 Windows PowerShell 中遇到 `not valid JSON` 或 `invalid format`，优先按以下顺序处理：
+
+1. 对支持 stdin 的命令改用 `--params -` / `--data -`
+2. 对必须内联传 JSON 的命令，改用 [../scripts/lark_cli_json.py](../scripts/lark_cli_json.py) 直接传 argv
+3. 在 PowerShell 中优先用 `--json-env` 从环境变量读取 JSON，避免手写引号转义
 
 ## 权限不足处理
 
@@ -66,13 +79,13 @@ lark-cli auth login --scope "<missing_scope>"
 
 **User 身份处理**：
 ```bash
-lark-cli auth login --scope "<缺少的scope>"
+lark-cli auth login --domain <缺少的domain>
 ```
 
 **Bot 身份处理**：
 提供 `console_url` 链接给用户，引导在开发者控制台添加缺少的权限。Bot 不需要也不能执行 `auth login`。
 
-## 本技能所需的完整 scope
+## 本技能所需的完整 scope（参考）
 
 | scope | 用途 |
 |-------|------|

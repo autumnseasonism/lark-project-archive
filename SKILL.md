@@ -122,6 +122,22 @@ lark-cli schema <service>.<resource>.<method>
 ```
 不要猜测字段格式。
 
+### PowerShell 与 JSON 参数
+
+在 Windows PowerShell 中，JSON-heavy 参数（如 `--params`、`--data`）有时会被 shell 改写，出现 `not valid JSON`、`invalid format` 或参数内容被吞掉的情况。处理顺序如下：
+
+1. 对支持 stdin 的命令优先改用 `--params -` / `--data -`
+2. 对必须内联传 JSON 的命令，改用 [scripts/lark_cli_json.py](scripts/lark_cli_json.py) 直接传 argv，在 PowerShell 中优先用 `--json-env` 从环境变量读取 JSON
+3. 如果命令本身不需要 JSON（如 `docs +update --markdown (Get-Content ... -Raw)`），继续使用现有 PowerShell 文件读取写法，不要额外包装
+
+示例：
+```powershell
+$env:LARK_JSON='{"token":"<wiki_token>"}'
+python scripts/lark_cli_json.py `
+  --json-env params=LARK_JSON `
+  -- wiki spaces get_node --as user --format json
+```
+
 ## Phase 1: 克隆项目
 
 ### 1.1 解析 GitHub URL

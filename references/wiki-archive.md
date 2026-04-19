@@ -2,6 +2,23 @@
 
 本文档包含知识空间管理、节点创建和层级组织的完整操作指南。
 
+## PowerShell 与 JSON 参数
+
+本文件中的很多命令都带 `--params` / `--data` JSON。在 Windows PowerShell 中，如果直接粘贴后出现 `not valid JSON`、`invalid format` 或参数内容丢失，优先使用以下方式：
+
+1. 对支持 stdin 的命令改用 `--params -` / `--data -`
+2. 对必须内联传 JSON 的命令，改用 [../scripts/lark_cli_json.py](../scripts/lark_cli_json.py) 直接传 argv
+3. 在 PowerShell 中优先用 `--json-env` 从环境变量读取 JSON
+
+示例：
+
+```powershell
+$env:LARK_JSON='{"token":"<wiki_token>"}'
+python ..\scripts\lark_cli_json.py `
+  --json-env params=LARK_JSON `
+  -- wiki spaces get_node --as user --format json
+```
+
 ## 核心概念
 
 - **知识空间（Space）**：知识库的顶层容器，通过 `space_id` 标识
